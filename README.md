@@ -32,6 +32,36 @@ Weiters:
 * API nach dem Muster Congress-API von Sunlight Labs [5]
 
 
+### Datenstruktur ###
+* Sitzung : Kürzel der Sitzung zb NRSITZ_00046 (unique)
+* Datum	: Datum der Sitzung
+* Gesetzgebungsperiode : zb XXIV
+* TypeTags : Kürzel für "Ausschuss" - Art, zb NRSITZ, ..
+
+#### Wortmeldung  ####
+
+##### Rohdaten #####
+* sitzung : link zur sitzungs-collection oder specherung des kürzels (zb NRSITZ_00046)
+* content-raw : gesamter inhalt des "WordSection" - DIVs
+* order : 	reihenfolge der wortmeldungen (position des wordsection-divs 0..n)
+
+##### Cleaned #####
+* paragraphs: P-Tags der relevaten Klassen (html)
+* paragraphs-cleaned : paragraphen, tag-stripped
+* paragraphs-processed : paragraphen, tag-stripped & "metadaten" entfernt (anrede/person, zwischenrufe - zwischenrufe ersetzt durch platzhalter ? )
+
+##### Processed #####
+* speaker		
+* party
+* speaker-title
+* type 	: a,b,m für Abgeordneter, Präsident/Wortführer, Minister/Regierungsmitglied
+* timestamp  : minute/sekunde bzw volle timestamp  (beginnzeit)
+* links		: vorhandene links 
+* reaktionen 	: zwischenrufe 
+* timestamps  :
+
+Evt. RDF Vokabular verwenden , zB an Schema.org [6] orientieren . 
+
 ### Referenzen ###
 
 [1] http://www.parlament.gv.at/PAKT/STPROT/
@@ -39,6 +69,7 @@ Weiters:
 [3] http://scrapy.org/
 [4] http://www.nltk.org/
 [5] http://services.sunlightlabs.com/
+[6] http://schema.org/docs/full.html
 
 
 
