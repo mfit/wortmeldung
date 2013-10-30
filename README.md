@@ -1,7 +1,7 @@
 wortmeldung
 ===========
 
-=== Beschreibung ===
+### Beschreibung ###
 
 Extraktion der Redebeiträge der Abgeordneten und Minister des österreichischen Parlaments.
 
@@ -14,7 +14,7 @@ Suchfunktion öffentlich zur Verfügung gestellt werden.
 
 
 
-=== Wozu & Ausblick ===
+### Wozu & Ausblick ###
 
 * Testen von NLP Bibliotheken Pattern [2], Nltk [4] usw.
 
@@ -32,7 +32,7 @@ Weiters:
 * API nach dem Muster Congress-API von Sunlight Labs [5]
 
 
-=== Referenzen ===
+### Referenzen ###
 
 [1] http://www.parlament.gv.at/PAKT/STPROT/
 [2] http://www.clips.ua.ac.be/pages/pattern
