@@ -1,4 +1,12 @@
+Scraper
+=======
 
+Requirements : 
+    scrapy
+    pymongo
+    
+Contents are stored in mongo-db.
+See settings.py  
 
 List spiders
 ------------
