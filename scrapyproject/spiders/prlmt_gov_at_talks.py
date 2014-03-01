@@ -3,6 +3,7 @@ from scrapy.selector import HtmlXPathSelector
 from scrapy.http import Request
 from items import WordSection
 from pymongo import Connection
+from scrapy.utils.project import get_project_settings
 import re
 
 
@@ -14,17 +15,25 @@ class FetchTalksSpider(Spider):
     regexStripTags = re.compile('<.*?>')
     regexFindSpeaker = re.compile('([^:]*):')
 
+    def __init__(self, *args, **kwargs):
+        settings = get_project_settings()
+        dbname = settings.get("PIPELINE_MONGO_DB", "transcripts")
+        col_session = settings.get("PIPELINE_MONGO_SESS_COL", \
+                                          "sessions")
+        connection = Connection()
+        db = connection[dbname]
+        self.sessionCollection = db[col_session]
+
     def start_requests(self):
         """ Retrieve unvisited url(s) from the database.
         """
-        connection = Connection()
-        db = connection.protokolle
         requests = []
-        item = db.protokoll.find({'visited': 0}).next()
+
+        item = self.sessionCollection.find({'visited': 0}).next()
         requests.append(Request(item['url'], callback=self.parse))
 
         item['visited'] = 1  # mark as visited
-        db.protokoll.save(item)
+        self.sessionCollection.save(item)
 
         return requests
 
