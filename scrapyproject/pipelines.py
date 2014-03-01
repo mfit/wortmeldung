@@ -18,14 +18,14 @@ class StoreToMongoDbPipeline():
         connection = Connection()
         db = connection[dbname]
         self.talkCollection = db[col_talks]
-        self.protokollCollection = db[col_session]
+        self.sessionCollection = db[col_session]
 
     def process_item(self, item, spider):
         """ Store item in the according collection
         """
 
         if isinstance(item, TranscriptItem):
-            self.protokollCollection.insert(dict(item))
+            self.sessionCollection.insert(dict(item))
 
         if isinstance(item, WordSection):
             self.talkCollection.insert(dict(item))
