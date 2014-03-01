@@ -35,6 +35,7 @@ class WordSection(Item):
 class TranscriptItem(Item):
     """ Represents a protocol.
     """
+
     url = Field()
     contents = Field()
     headline = Field()
