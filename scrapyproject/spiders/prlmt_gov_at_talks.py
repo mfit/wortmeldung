@@ -1,4 +1,4 @@
-from scrapy.spider import BaseSpider
+from scrapy.spider import Spider
 from scrapy.selector import HtmlXPathSelector
 from scrapy.http import Request
 from items import WordSection
